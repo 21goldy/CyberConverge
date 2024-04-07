@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Phishing Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+           .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        #phishingDetector button {
+    display: block;
+    margin: 0 auto; /* This will center the button horizontally */
+}
+
+
+        #phishingDetector {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 24px); /* Adjusted width to match quiz container */
+            padding: 12px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #495057;
+        }
+
+        button {
+            background-color: #333;
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Example email content styles */
+        .example {
+            margin-top: 40px;
+        }
+
+        .example-content {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+         p {
+            color: #666;
+            text-align: justify;
+            line-height: 1.5;
+            font-weight: 550;
+            font-size: 16px;
+            margin:10px
+        }
+
+            /* Media queries for responsiveness */
+        @media only screen and (max-width: 768px) {
+            .quiz-container {
+                width: 80%; /* Adjust width for smaller screens */
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .quiz-container {
+                width: 90%; /* Further adjust width for extra small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Email Phishing Detector</h1>
+    </div>
+
+    <div id="toolDescription" class="container">
+        <p>
+            A simple phishing email detector is like a vigilant watchdog for
+            your inbox, sniffing out suspicious emails that might be trying to
+            trick you into giving away personal information or clicking on harmful links.
+            It works by analyzing the content and characteristics of emails, looking for telltale
+            signs of phishing attempts, such as fake sender addresses, misspelled words, or urgent
+            requests for sensitive information. </p>
+
+<p>This tool is incredibly important because phishing emails are
+    one of the most common ways cybercriminals try to steal your identity
+    or infect your computer with malware. Just like having a savvy friend
+    who warns you about potential scams, a phishing email detector helps keep
+    you safe online by flagging suspicious messages before they can do any harm.
+    By using this detector, you can avoid falling victim to phishing attacks and
+    protect your personal information from ending up in the wrong hands.
+    </p>
+        <p>Scroll down to see a sample of how a phishing mail looks. Paste it into the box to see results!</p>
+    </div>
+
+    <div id="phishingDetector">
+        <label for="emailContent">Enter Email Content:</label>
+        <input type="text" id="emailContent" required>
+        <br>
+        <button type="button" onclick="detectPhishing()">Detect Phishing</button>
+    </div>
+  <br>
+    <br>
+    <div id="result"></div>
+
+    <!-- Example email content 1 -->
+    <div class="example">
+        <h2>Example 1: Phishing Email</h2>
+        <div class="example-content">
+            <strong>Subject:</strong> Urgent: Verify Your Account Now!<br>
+            <br>
+            Dear [Your Name],<br>
+            <br>
+            This is an urgent message regarding your account. We have noticed suspicious activities and need you to
+            verify your account immediately. Click the link below to log in and secure your account.<br>
+            [Phishing Link]<br>
+            <br>
+            Please do this as soon as possible to prevent any unauthorized access.<br>
+            <br>
+            Thank you for your cooperation.<br>
+            <br>
+            Sincerely,<br>
+            [Sender Name]
+        </div>
+    </div>
+
+    <!-- Example email content 2 -->
+    <div class="example">
+        <h2>Example 2: Legitimate Email</h2>
+           <a class="back-button" href="/">Back to Dashboard</a>
+        <div class="example-content">
+            <strong>Subject:</strong> Monthly Newsletter - Exciting Updates Inside!<br>
+            <br>
+            Dear [Your Name],<br>
+            <br>
+            We hope this email finds you well. In this month's newsletter, we have exciting updates and news to
+            share with you.<br>
+            - New product releases<br>
+            - Exclusive discounts for our loyal customers<br>
+            - Tips and tricks for using our services<br>
+            <br>
+            Click the link below to read the full newsletter.<br>
+            [Legitimate Newsletter Link]<br>
+            <br>
+            Thank you for being a valued member of our community.<br>
+            <br>
+            Best regards,<br>
+            [Sender Name]
+        </div>
+    </div>
+
+    <script>
+        function detectPhishing() {
+            var emailContent = document.getElementById('emailContent').value;
+            var resultDiv = document.getElementById('result');
+
+            // Simulate a basic phishing detection algorithm
+            var isPhishing = /password|account|login|verification|urgent/i.test(emailContent);
+
+            resultDiv.innerHTML = '<h2>Detection Result:</h2>';
+            if (isPhishing) {
+                resultDiv.innerHTML += '<p style="color: #d9534f;">Potential phishing content detected!</p>';
+            } else {
+                resultDiv.innerHTML += '<p style="color: #5bc0de;">No phishing content detected.</p>';
+            }
+        }
+    </script>
+
+</body>
+</html>

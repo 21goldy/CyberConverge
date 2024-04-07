@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security Header Checker</title>
+    <style>
+        /* Styles for enhanced appearance */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding-top: 20px;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        h1 {
+
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+         .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+         .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+          p {
+            color: #666;
+            text-align: justify;
+            line-height: 1.5;
+            font-weight: 550;
+            font-size: 16px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            width:500px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            background-color: #333;
+            cursor: pointer;
+        }
+
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+         <h1>Security Header Checker</h1>
+          <a class="back-button" href="/">Back to Dashboard</a>
+    </div>
+
+<div class="container">
+    <p>
+A security header checker is like a virtual inspector that examines the protective measures
+        of a website, specifically its security headers. These headers are like security guards
+        stationed at the entrance of a website, ensuring only authorized visitors get in and keeping
+        out potential threats. The checker assesses if these guards are strong enough to fend off
+        attacks and protect sensitive information from being stolen or tampered with.
+</p>
+<p>This tool is crucial for website owners because it gives them a clear picture of
+        how well their website guards its data against cyber threats. It's akin to
+        having a security expert audit your home to ensure all doors and windows are
+        securely locked. By using a security header checker, website owners can strengthen
+        their defenses and ensure that their visitors' personal information remains safe
+        their defenses and ensure that their visitors' personal information remains safe
+        from prying eyes and malicious attacks.</p>
+
+     <p> As an example you can try scanning the following wesbite : </p>
+    <ul>
+        <li>
+            <b>http://www.vulnweb.com/</b>
+        </li>
+        <li><b>https://www.youtube.com/</b></li>
+    </ul>
+</div>
+<div class="container">
+    <form action="/check_headers" method="post">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" required>
+        <br><br>
+        <input type="submit" value="Check Headers">
+    </form>
+</div>
+</body>
+</html>

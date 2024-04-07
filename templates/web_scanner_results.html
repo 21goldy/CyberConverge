@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan Results</title>
+    <style>
+        /* Styles for the page layout and content */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #555;
+            text-decoration: none;
+        }
+
+        /* Styles to make headers bold */
+        .bold-header {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Scan Results for {{ url }}</h1>
+
+        <h2>Vulnerabilities Found:</h2>
+        <ul>
+            {% for vulnerability, value in vulnerabilities.items() %}
+                <li>
+                    {% if vulnerability == 'XSS' %}
+                        <span class="bold-header">{{ vulnerability }}:</span>
+                        {% if value %}
+                            <ul>
+                                {% for script_tag in value %}
+                                    <li>{{ script_tag }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            None
+                        {% endif %}
+                    {% elif vulnerability == 'SQL Injection' %}
+                        <span class="bold-header">{{ vulnerability }}:</span> {% if value %}Found{% else %}None{% endif %}
+                    {% elif vulnerability == 'Sensitive Headers' %}
+                        <span class="bold-header">{{ vulnerability }}:</span> {% if value %}{{ value }}{% else %}None{% endif %}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="/scan-another">Scan Another URL</a>
+    </div>
+</body>
+</html>

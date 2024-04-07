@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Monitoring Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+         .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li span {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        span#host-ip {
+            color: #007bff;
+        }
+
+        span#bytes-sent,
+        span#bytes-received,
+        span#packets-sent,
+        span#packets-received {
+            color: #28a745;
+        }
+         p {
+            color: #666;
+            text-align: justify;
+            line-height: 1.5;
+            font-weight: 550;
+            font-size: 16px;
+            margin:10px
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .container {
+            max-width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Media query for responsiveness */
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function updateMonitoringData() {
+                $.get('/monitor', function(data) {
+                    $('#host-ip').text(data.host_ip);
+                    $('#bytes-sent').text(data.bytes_sent);
+                    $('#bytes-received').text(data.bytes_received);
+                    $('#packets-sent').text(data.packets_sent);
+                    $('#packets-received').text(data.packets_received);
+                });
+            }
+            setInterval(updateMonitoringData, 1000); // Update every second
+        });
+    </script>
+</head>
+<body>
+ <div class="header">
+        <h1>Network Monitoring Tool</h1>
+          <a class="back-button" href="/">Back to Dashboard</a>
+    </div>
+<div class="container">
+    <p>
+A network monitoring tool is a software or hardware solution that oversees the performance and security of a computer network.
+        It continuously tracks network traffic, devices, and systems to detect any
+        abnormalities or issues, ensuring optimal functionality and identifying potential security threats. </p>
+
+<p>Imagine your computer network as a bustling city with various roads, intersections, and buildings. Now, think of a network monitoring tool as a vigilant traffic officer stationed at a central command center,
+        observing the flow of data traffic. Just like how the traffic officer monitors traffic congestion, accidents, or suspicious activities on the roads, the network monitoring tool watches over your network. It keeps an eye on the data packets traveling between devices, identifies any bottlenecks or disruptions in the network, and alerts you to
+        potential issues or security breaches, helping you maintain a smooth and secure network environment.</p>
+</div>
+    <div class="container">
+
+        <h2>Host IP: <span id="host-ip"></span></h2>
+        <h2>Live Monitoring:</h2>
+        <ul>
+            <li><span>Bytes Sent:</span> <span id="bytes-sent">0</span></li>
+            <li><span>Bytes Received:</span> <span id="bytes-received">0</span></li>
+            <li><span>Packets Sent:</span> <span id="packets-sent">0</span></li>
+            <li><span>Packets Received:</span> <span id="packets-received">0</span></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Tool</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+         .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+         p {
+            color: #666;
+            text-align: justify;
+            line-height: 1.5;
+            font-weight: 550;
+            font-size: 16px;
+            margin:10px
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(10vh - 80px); /* Adjust to keep the list centered */
+        }
+
+        .details-container {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-heading {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Hash Generator and Verifier Tool</h1>
+          <a class="back-button" href="/">Back to Dashboard</a>
+    </div>
+    <div class = "container">
+        <p>
+A hash generator and verifier are like secret code makers and breakers for digital information.
+            When you create a hash, it's like turning a message into an unreadable jumble of characters
+            that only those with the right key can decipher. The generator creates this unique code for any piece of data,
+            whether it's a password or a file. Then, the verifier acts as the decoder, checking if the
+            code matches the original data, ensuring that nothing has been tampered with or altered.
+</p>
+<p>These tools are vital because they add an extra layer of security to sensitive information online.
+            Think of them as digital locks and keys for your data. By using a hash generator and verifier,
+            users can ensure the integrity and authenticity of their information, safeguarding it from unauthorized
+            access or changes. It's like having a secure vault for your digital valuables, ensuring they remain safe and
+            unchanged, even in a world full of digital threats.</p>
+    </div>
+    <div class="dashboard">
+        <div class="details-container">
+            <h2 class="details-heading">Choose an Action</h2>
+            <div class="buttons-container">
+                <a class="button" href="/generate">Generate Hash</a>
+                <a class="button" href="/verify">Verify Hash</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

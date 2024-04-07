@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directory Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+           .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+         .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+         p {
+            color: #666;
+            text-align: justify;
+            line-height: 1.5;
+            font-weight: 550;
+            font-size: 16px;
+            margin:10px
+        }
+
+
+        form {
+            margin-top: 20px;
+             text-align: center;
+            display: flex;
+              align-items: center;
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 10px;
+
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 20px;
+            padding: 0;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+         p {
+            color: #666;
+            text-align: justify;
+            line-height: 1.5;
+            font-weight: 550;
+            font-size: 16px;
+            margin:10px
+        }
+
+        .container {
+            max-width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+ <div class="header">
+        <h1>Directory Monitoring</h1>
+          <a class="back-button" href="/">Back to Dashboard</a>
+    </div>
+<!--    <h1>Directory Monitoring</h1>-->
+    <br>
+ <div class="container">
+    <p>Welcome to the directory monitoring tool! This tool tracks changes in specified folders, providing real-time insights for cybersecurity.</p>
+    <p>Imagine your computer is like a big filing cabinet, filled with folders and files. Now, directory monitoring is like having a special helper who keeps an eye on this filing cabinet for you.
+    <p>So, why is this helpful? Well, think about it: sometimes you might accidentally delete an important file, or maybe someone else on your computer network changes something without you knowing. With directory monitoring, you can catch these changes as soon as they happen, helping you keep track of what's going on in your digital world.
+It's kind of like having a security guard for your files, making sure everything stays in its place and nothing goes missing without you knowing about it. And that's why directory monitoring can be really handy, even for someone who's not a tech expert!
+Here's how it works: Every time something changes in one of your folders—like a new file is added or an old one is removed—this helper notices right away. It's like having a little detective who's always on the lookout.</p>
+    <br>
+    <form action="/set_directory" method="post">
+        <label for="directoryPath" >Directory Path:</label>
+        <input type="text" name="directoryPath" id="directoryPath" value="{{ watched_dir }}">
+        <button type="submit">Set Directory</button>
+    </form>
+     </div>
+    <ul id="resultsList">
+        {% for result in results %}
+            <li>{{ result }}</li>
+        {% endfor %}
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        socket.on('update_results', function(data) {
+            var resultsList = document.getElementById('resultsList');
+            var listItem = document.createElement('li');
+            listItem.textContent = data.result;
+            resultsList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

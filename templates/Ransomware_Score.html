@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ransomware Quiz - Score</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .score-container {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            width: 50%;
+            margin: 50px auto; /* Center the score container */
+            text-align: center; /* Center text */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+       <script>
+      var output = document.getElementById('output');
+      function stopBack() {
+         window.history.go(1);
+      }
+   </script>
+
+</head>
+<body onload="stopBack();">
+    <div class="header">
+        <h1>Ransomware Quiz - Score</h1>
+        <a class="back-button" href="/">Back to Dashboard</a>
+    </div>
+    <div class="score-container">
+        <div class="score">
+            Your score is: {{ score }}
+        </div>
+        <div class="message">
+            {{ message }}
+        </div>
+        <a href="/Ransomware_Quiz">Retake Quiz</a>
+    </div>
+</body>
+</html>
