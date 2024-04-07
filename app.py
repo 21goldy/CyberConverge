@@ -234,9 +234,9 @@ def scan_code():
         return render_template('code_scanner_error.html', error_message=error_message)
 
 
-@app.route('/Ransomware_Quiz')
-def quiz():
-    return render_template('Ransomware_Quiz.html')
+# @app.route('/Ransomware_Quiz')
+# def quiz():
+#     return render_template('Ransomware_Quiz.html')
 
 @app.route('/network_monitoring')
 def index6():
